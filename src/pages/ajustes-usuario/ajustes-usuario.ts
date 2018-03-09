@@ -3,26 +3,21 @@ import { NavController, ToastController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Profile } from '../../models/profile';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database-deprecated';
-import { AuthProvider } from '../../providers/auth/auth';
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-ajustes-usuario',
+  templateUrl: 'ajustes-usuario.html',
 })
-export class HomePage {
+export class AjustesUsuarioPage {
 
   profileData: FirebaseObjectObservable<Profile>;
 
   constructor(private afAuth: AngularFireAuth, private toast: ToastController,
     private afDatabase: AngularFireDatabase,
-    public navCtrl: NavController, public navParams: NavParams
-    // , public myAuth: AuthProvider
-    ) {
+    public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewWillLoad() {
-    // this.probarSiMuestraUserName();
-
     this.afAuth.authState.take(1).subscribe(data => {
       if (data && data.email && data.uid) {
         this.toast.create({
@@ -38,13 +33,6 @@ export class HomePage {
           duration: 3000
         }).present();
       }
-    });
+    })
   }
-
-  // probarSiMuestraUserName(){
-  //   let usuario = this.myAuth.getCurrentUserData();
-  //     console.log(usuario);
-  //     console.log(usuario.nombreDeUsuario);
-    
-  // }
 }
