@@ -21,6 +21,9 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database-deprecated';
 import { AngularFireDatabase } from 'angularfire2/database'
 import { AjustesUsuarioPage } from '../pages/ajustes-usuario/ajustes-usuario';
+import { AddRoomPage } from '../pages/add-room/add-room';
+import { ChatPage } from '../pages/chat/chat';
+import { RoomPage } from '../pages/room/room';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBFsT1xxmyYQrT04HaVzKmiNEoR7BzKc50",
@@ -41,7 +44,10 @@ export const firebaseConfig = {
     LoginPage,
     SignupPage,
     ProfilePage,
-    AjustesUsuarioPage
+    AjustesUsuarioPage,
+    AddRoomPage,
+    ChatPage,
+    RoomPage
   ],
   imports: [
     BrowserModule,
@@ -62,7 +68,10 @@ export const firebaseConfig = {
     LoginPage,
     SignupPage,
     ProfilePage,
-    AjustesUsuarioPage
+    AjustesUsuarioPage,
+    AddRoomPage,
+    ChatPage,
+    RoomPage
   ],
   providers: [
     StatusBar,

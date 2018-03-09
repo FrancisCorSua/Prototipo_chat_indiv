@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from "rxjs/Observable";
-import { AngularFireDatabase } from 'angularfire2/database-deprecated';
+import { AngularFireDatabase } from 'angularfire2/database';
 @Injectable()
 export class AuthProvider {
 
@@ -20,20 +20,22 @@ export class AuthProvider {
         });
     }
 
-    // getUser() {
-    //     return Observable.create(observer => {
-    //         this.afDatabase.object(`profile/${data.uid}`).then((authData) => {
-    //             //console.log(authData);
-    //             observer.next(authData);
-    //         }).catch((error) => {
-    //             observer.error(error);
-    //         });
-    //     });
-    // }
-
-    // getCurrentUserData(): any {
-    //     return this.af.auth.currentUser ? this.af.auth.currentUser : null;
-    // }
+    getUser() {
+        var currentUser = this.af.auth.currentUser ? this.af.auth.currentUser : null;
+        console.log(currentUser);
+        if(currentUser){
+            return Observable.create(observer => {
+                let itemRef = this.afDatabase.object(`profile/${currentUser.uid}`);
+                itemRef.snapshotChanges().subscribe(action => {
+                    console.log(action.type);
+                    console.log(action.key)
+                    console.log(action.payload.val())
+                    observer.next(action.payload.val());
+                });                
+            });
+        } 
+        return null;
+    }
 
     registerUser(credentials: any) {
         return Observable.create(observer => {

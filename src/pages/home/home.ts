@@ -13,16 +13,22 @@ export class HomePage {
 
   profileData: FirebaseObjectObservable<Profile>;
 
+  myUserName: any;
   constructor(private afAuth: AngularFireAuth, private toast: ToastController,
     private afDatabase: AngularFireDatabase,
-    public navCtrl: NavController, public navParams: NavParams
-    // , public myAuth: AuthProvider
+    public navCtrl: NavController, public navParams: NavParams,
+    public myAuth: AuthProvider
     ) {
   }
 
   ionViewWillLoad() {
     // this.probarSiMuestraUserName();
 
+    this.myAuth.getUser().subscribe(data => {
+      console.log("en el home");
+      console.log(data);
+    });
+    
     this.afAuth.authState.take(1).subscribe(data => {
       if (data && data.email && data.uid) {
         this.toast.create({

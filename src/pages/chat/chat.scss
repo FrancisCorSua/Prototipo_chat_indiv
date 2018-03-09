@@ -1,0 +1,71 @@
+page-chat {
+    #content {
+        
+        background-image: url(../assets/imgs/simple.jpg)  ;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 100%;
+        overflow: hidden;  
+    }
+    .left-bubble {
+        padding: 5px 10px;
+        background: color($colors, 'primary');
+        margin: 5px;
+        border-radius: 3px;
+        float: left;
+    }
+    .right-bubble  {
+        padding: 5px 10px;
+        margin: 5px;
+        border-radius: 3px;
+        background: color($colors, 'light' );
+        float: right;
+    }
+    .username {
+        font-weight: bold;
+        font-size: 90%;
+        color: #1f004d;
+        font-style: italic;
+    }        
+    .messageContent {
+        font-size: 90%;
+        color:black;
+    }
+    .chat-status{
+        min-height: 49px;
+        .chat-date{
+            display: block;
+            font-size: 10px;
+            color: #fff;
+            font-style: italic;
+            color:#1f004d;
+            height: 15px;
+            left: 10%;
+            right: 10%;
+        }
+        .chat-content-center{
+            padding: 5px 10px;
+            background-color: #e1e1f7;
+            border-radius: 6px;
+            font-size: 12px;
+            color: #555;
+            height: 34px;
+            left: 10%;
+            right: 10%;
+
+        }
+    }
+    .msg-date{
+        font-size: 10px;
+    }
+      
+    ion-footer {
+        background: white;
+        ion-icon {
+            padding: 10px;
+            font-size: 20px;
+            color: #8c1aff;
+        }
+    }
+}
