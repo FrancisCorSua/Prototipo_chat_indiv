@@ -52,6 +52,20 @@ export class ChatPage {
       }, 1000
       );
     });
+    //   firebase.database().ref('chatrooms/' + this.roomkey + '/chats').on('value', resp => {
+    //     this.chats = [];
+    //     this.chats = snapshotToArray(resp);
+    //     this.myAuth.getUser().subscribe(data => {
+    //       console.log("en el home");
+    //       console.log(data);
+    //     setTimeout(() => {
+    //       if (this.offStatus === false) {
+    //         this.content.scrollToBottom(300);
+    //       }
+    //     }, 1000
+    //     );
+    //   });
+    // }
   }
 
   sendMessage() {
@@ -69,29 +83,37 @@ export class ChatPage {
       });
       this.data.message = '';
     });
-    
+
   }
 
   exitChat() {
-    let exitData = firebase.database().ref('chatrooms/' + this.roomkey + '/chats').push();
-    this.myAuth.getUser().subscribe(data => {
-      console.log("en el home");
-      console.log(data);
-      this.nickname = data.nombreDeUsuario;
-      exitData.set({
-        type: 'exit',
-        user: this.nickname,
-        message: this.nickname + ' ha salido del chat',
-        sendDate: Date()
-      });
-      this.offStatus = true;
-    });
-    
+    this.offStatus = true;
 
     this.navCtrl.setRoot(RoomPage, {
       nickname: this.nickname
     });
   }
+
+  // abandonarChat() {
+  //   let exitData = firebase.database().ref('chatrooms/' + this.roomkey + '/chats').push();
+  //   this.myAuth.getUser().subscribe(data => {
+  //     console.log("en el home");
+  //     console.log(data);
+  //     this.nickname = data.nombreDeUsuario;
+  //     exitData.set({
+  //       type: 'exit',
+  //       user: this.nickname,
+  //       message: this.nickname + ' ha salido del chat',
+  //       sendDate: Date()
+  //     });
+  //     this.offStatus = true;
+  //   });
+
+
+  //   this.navCtrl.setRoot(RoomPage, {
+  //     nickname: this.nickname
+  //   });
+  // }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChatPage');
