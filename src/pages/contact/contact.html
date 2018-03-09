@@ -1,0 +1,16 @@
+<ion-header>
+    <ion-navbar color="primary">
+      <ion-title>Contact</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <div *ngIf="perfiles">
+      <ion-item *ngFor="let profileData of perfiles; let i = index">
+            <p>Nombre de usuario: {{profileData.nombreDeUsuario}}</p>
+            <p>Nombre: {{profileData.nombre}}</p>
+            <p>Apellido: {{profileData.apellido}}</p>
+        
+      </ion-item>
+    </div>
+  </ion-content>

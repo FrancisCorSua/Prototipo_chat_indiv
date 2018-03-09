@@ -1,0 +1,32 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Perfil</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-label floating>Nombre de Usuario</ion-label>
+    <ion-input [(ngModel)]="profile.nombreDeUsuario"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Nombre</ion-label>
+    <ion-input [(ngModel)]="profile.nombre"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Apellido</ion-label>
+    <ion-input [(ngModel)]="profile.apellido"></ion-input>
+  </ion-item>
+
+  <button ion-button clear block (click)="crearPerfil()">Crear Perfil</button>
+
+</ion-content>

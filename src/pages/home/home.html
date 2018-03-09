@@ -1,0 +1,11 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <p>Nombre de usuario: {{(profileData | async)?.nombreDeUsuario}}</p>
+  <p>Nombre: {{(profileData | async)?.nombre}}</p>
+  <p>Apellido: {{(profileData | async)?.apellido}}</p>
+</ion-content>
