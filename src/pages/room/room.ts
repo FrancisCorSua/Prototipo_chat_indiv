@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { AddRoomPage } from '../add-room/add-room';
 import { ChatPage } from '../chat/chat';
 import * as firebase from 'firebase';
@@ -17,22 +17,47 @@ import * as firebase from 'firebase';
 })
 export class RoomPage {
   rooms = [];
-  ref = firebase.database().ref('chatrooms/')
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  ref = firebase.database().ref('chatrooms/');
+  salir: boolean = false;
+  nickname: string = '';
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
     this.ref.on('value', resp => {
       this.rooms = [];
       this.rooms = snapshotToArray(resp);
+      this.salir = this.navParams.get("salir") as boolean;
+      this.nickname = this.navParams.get("nickname") as string;
     });
   }
 
   addRoom() {
     this.navCtrl.push(AddRoomPage);
   }
-  joinRoom(key) {
-    this.navCtrl.setRoot(ChatPage, {
-      key: key,
-      nickname: this.navParams.get("nickname")
+
+  showAlert() {
+    let alert = this.alertCtrl.create({
+      title: 'Usted ya no pertenece a este grupo',
+      //subTitle: 'Your friend, Obi wan Kenobi, just accepted your friend request!',
+      buttons: ['OK']
     });
+    alert.present();
+  }
+
+  deleteRoom(key) {
+    let newref = firebase.database().ref("chatrooms");
+    newref.remove(key);
+  }
+
+  joinRoom(key) {
+    if (this.salir == true) {
+      this.showAlert();
+
+    } else {
+      this.navCtrl.setRoot(ChatPage, {
+        key: key,
+        nickname: this.navParams.get("nickname")
+      });
+    }
+
   }
 
   ionViewDidLoad() {

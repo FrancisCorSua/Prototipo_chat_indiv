@@ -23,6 +23,7 @@ export class ChatPage {
   roomkey: string;
   nickname: string;
   offStatus: boolean = false;
+  salir: boolean = false;
   constructor(public alerCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, public myAuth: AuthProvider) {
     this.roomkey = this.navParams.get("key") as string;
     this.nickname = this.navParams.get("nickname") as string;
@@ -84,11 +85,11 @@ export class ChatPage {
 
   doConfirm() {
     let confirm = this.alerCtrl.create({
-      title: 'Use this lightsaber?',
-      message: 'Do you agree to use this lightsaber to do good across the intergalactic galaxy?',
+
+      message: 'Desea abandonar el chat',
       buttons: [
         {
-          text: 'Disagree',
+          text: 'Cancelar',
           handler: () => {
             console.log('Disagree clicked');
             this.navCtrl.setRoot(TabsPage, {
@@ -99,7 +100,7 @@ export class ChatPage {
           }
         },
         {
-          text: 'Agree',
+          text: 'Aceptar',
           handler: () => {
             console.log('Agree clicked');
             let exitData = firebase.database().ref('chatrooms/' + this.roomkey + '/chats').push();
@@ -115,9 +116,11 @@ export class ChatPage {
               });
               this.offStatus = true;
             });
-
+            this.salir = true;
             this.navCtrl.setRoot(RoomPage, {
-              nickname: this.nickname
+              nickname: this.nickname,
+              salir: this.salir
+
             });
 
           }
