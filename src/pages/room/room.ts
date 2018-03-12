@@ -48,7 +48,7 @@ export class RoomPage {
   }
 
   joinRoom(key) {
-    if (this.salir == true) {
+    if (this.salir) {
       this.showAlert();
 
     } else {
