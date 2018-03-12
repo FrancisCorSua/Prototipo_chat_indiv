@@ -1,9 +1,16 @@
 import { Component, ViewChild } from '@angular/core';
+<<<<<<< HEAD
 import { IonicPage, NavController, NavParams, Content, AlertController } from 'ionic-angular';
 import { RoomPage } from '../room/room';
 import * as firebase from 'firebase';
 import { AuthProvider } from '../../providers/auth/auth';
 import { TabsPage } from '../tabs/tabs';
+=======
+import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
+import { RoomPage } from '../room/room';
+import * as firebase from 'firebase';
+import { AuthProvider } from '../../providers/auth/auth';
+>>>>>>> 34f31c7246b741558fecb260c1b5c835eee34970
 /**
  * Generated class for the ChatPage page.
  *
@@ -23,8 +30,12 @@ export class ChatPage {
   roomkey: string;
   nickname: string;
   offStatus: boolean = false;
+<<<<<<< HEAD
   salir: boolean = false;
   constructor(public alerCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, public myAuth: AuthProvider) {
+=======
+  constructor(public navCtrl: NavController, public navParams: NavParams, public myAuth: AuthProvider) {
+>>>>>>> 34f31c7246b741558fecb260c1b5c835eee34970
     this.roomkey = this.navParams.get("key") as string;
     this.nickname = this.navParams.get("nickname") as string;
     this.data.type = 'message';
@@ -54,7 +65,24 @@ export class ChatPage {
       }, 1000
       );
     });
+<<<<<<< HEAD
 
+=======
+    //   firebase.database().ref('chatrooms/' + this.roomkey + '/chats').on('value', resp => {
+    //     this.chats = [];
+    //     this.chats = snapshotToArray(resp);
+    //     this.myAuth.getUser().subscribe(data => {
+    //       console.log("en el home");
+    //       console.log(data);
+    //     setTimeout(() => {
+    //       if (this.offStatus === false) {
+    //         this.content.scrollToBottom(300);
+    //       }
+    //     }, 1000
+    //     );
+    //   });
+    // }
+>>>>>>> 34f31c7246b741558fecb260c1b5c835eee34970
   }
 
   sendMessage() {
@@ -83,6 +111,7 @@ export class ChatPage {
     });
   }
 
+<<<<<<< HEAD
   doConfirm() {
     let confirm = this.alerCtrl.create({
 
@@ -131,6 +160,8 @@ export class ChatPage {
   }
 
 
+=======
+>>>>>>> 34f31c7246b741558fecb260c1b5c835eee34970
   // abandonarChat() {
   //   let exitData = firebase.database().ref('chatrooms/' + this.roomkey + '/chats').push();
   //   this.myAuth.getUser().subscribe(data => {
@@ -146,10 +177,18 @@ export class ChatPage {
   //     this.offStatus = true;
   //   });
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 34f31c7246b741558fecb260c1b5c835eee34970
   //   this.navCtrl.setRoot(RoomPage, {
   //     nickname: this.nickname
   //   });
   // }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 34f31c7246b741558fecb260c1b5c835eee34970
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChatPage');
   }

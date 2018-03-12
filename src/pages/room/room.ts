@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
+<<<<<<< HEAD
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+=======
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+>>>>>>> 34f31c7246b741558fecb260c1b5c835eee34970
 import { AddRoomPage } from '../add-room/add-room';
 import { ChatPage } from '../chat/chat';
 import * as firebase from 'firebase';
@@ -17,6 +21,7 @@ import * as firebase from 'firebase';
 })
 export class RoomPage {
   rooms = [];
+<<<<<<< HEAD
   ref = firebase.database().ref('chatrooms/');
   salir: boolean = false;
   nickname: string = '';
@@ -26,12 +31,20 @@ export class RoomPage {
       this.rooms = snapshotToArray(resp);
       this.salir = this.navParams.get("salir") as boolean;
       this.nickname = this.navParams.get("nickname") as string;
+=======
+  ref = firebase.database().ref('chatrooms/')
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.ref.on('value', resp => {
+      this.rooms = [];
+      this.rooms = snapshotToArray(resp);
+>>>>>>> 34f31c7246b741558fecb260c1b5c835eee34970
     });
   }
 
   addRoom() {
     this.navCtrl.push(AddRoomPage);
   }
+<<<<<<< HEAD
 
   showAlert() {
     let alert = this.alertCtrl.create({
@@ -58,6 +71,13 @@ export class RoomPage {
       });
     }
 
+=======
+  joinRoom(key) {
+    this.navCtrl.setRoot(ChatPage, {
+      key: key,
+      nickname: this.navParams.get("nickname")
+    });
+>>>>>>> 34f31c7246b741558fecb260c1b5c835eee34970
   }
 
   ionViewDidLoad() {
