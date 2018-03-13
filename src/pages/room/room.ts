@@ -18,13 +18,13 @@ import * as firebase from 'firebase';
 export class RoomPage {
   rooms = [];
   ref = firebase.database().ref('chatrooms/');
-  salir: boolean = false;
+  salir = false;
   nickname: string = '';
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+    this.salir = this.navParams.get("salir") as boolean;
     this.ref.on('value', resp => {
       this.rooms = [];
       this.rooms = snapshotToArray(resp);
-      this.salir = this.navParams.get("salir") as boolean;
       this.nickname = this.navParams.get("nickname") as string;
     });
   }
@@ -36,15 +36,15 @@ export class RoomPage {
   showAlert() {
     let alert = this.alertCtrl.create({
       title: 'Usted ya no pertenece a este grupo',
-      //subTitle: 'Your friend, Obi wan Kenobi, just accepted your friend request!',
+
       buttons: ['OK']
     });
     alert.present();
   }
 
   deleteRoom(key) {
-    let newref = firebase.database().ref("chatrooms");
-    newref.remove(key);
+    let newref = firebase.database().ref("chatrooms").child(key);
+    newref.remove();
   }
 
   joinRoom(key) {
@@ -52,11 +52,14 @@ export class RoomPage {
       this.showAlert();
 
     } else {
+      this.salir = false;
       this.navCtrl.setRoot(ChatPage, {
         key: key,
-        nickname: this.navParams.get("nickname")
+        nickname: this.navParams.get("nickname"),
+        salir: this.salir
       });
     }
+
 
   }
 

@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { AlertController } from 'ionic-angular';
-import { AuthProvider } from '../../providers/auth/auth';
-import { LoginPage } from '../login/login';
 import { User } from '../../models/user';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { ProfilePage } from '../profile/profile';
@@ -52,7 +49,7 @@ export class SignupPage {
           duration: 3000
         }).present();
       }
-      if(user.email && user.contrasena != null && user.contrasena.length < 6){
+      if (user.email && user.contrasena != null && user.contrasena.length < 6) {
         this.toast.create({
           message: `La contraseña debe tener al menos 6 caracteres`,
           duration: 3000

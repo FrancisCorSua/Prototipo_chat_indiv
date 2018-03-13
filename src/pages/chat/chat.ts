@@ -8,7 +8,7 @@ import { TabsPage } from '../tabs/tabs';
  * Generated class for the ChatPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+ * Ionic pages and navigation.kjjjj
  */
 
 @IonicPage()
@@ -27,6 +27,8 @@ export class ChatPage {
   constructor(public alerCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, public myAuth: AuthProvider) {
     this.roomkey = this.navParams.get("key") as string;
     this.nickname = this.navParams.get("nickname") as string;
+    this.salir = this.navParams.get("salir") as boolean;
+
     this.data.type = 'message';
     this.data.nickname = this.nickname;
 
@@ -74,7 +76,7 @@ export class ChatPage {
 
   }
 
-  exitChat() {
+  back() {
     this.offStatus = true;
 
     this.navCtrl.setRoot(RoomPage, {
@@ -102,6 +104,7 @@ export class ChatPage {
           text: 'Aceptar',
           handler: () => {
             console.log('Agree clicked');
+
             let exitData = firebase.database().ref('chatrooms/' + this.roomkey + '/chats').push();
             this.myAuth.getUser().subscribe(data => {
               console.log("en el home");
@@ -122,6 +125,7 @@ export class ChatPage {
 
             });
 
+
           }
         }
       ]
@@ -130,25 +134,6 @@ export class ChatPage {
   }
 
 
-  // abandonarChat() {
-  //   let exitData = firebase.database().ref('chatrooms/' + this.roomkey + '/chats').push();
-  //   this.myAuth.getUser().subscribe(data => {
-  //     console.log("en el home");
-  //     console.log(data);
-  //     this.nickname = data.nombreDeUsuario;
-  //     exitData.set({
-  //       type: 'exit',
-  //       user: this.nickname,
-  //       message: this.nickname + ' ha salido del chat',
-  //       sendDate: Date()
-  //     });
-  //     this.offStatus = true;
-  //   });
-
-  //   this.navCtrl.setRoot(RoomPage, {
-  //     nickname: this.nickname
-  //   });
-  // }
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChatPage');
   }

@@ -6,10 +6,10 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>room</ion-title>
+    <ion-title>Rooms</ion-title>
     <ion-buttons end>
       <button ion-button ocon-only (click)="addRoom()">
-        <ion-icon name="add-circle"></ion-icon>
+        <ion-icon name="add-circle" item-end></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -23,7 +23,9 @@
         <ion-icon name="chatboxes" item-end (click)="joinRoom(room.key)"></ion-icon>
       </ion-item>
       <ion-item-options side="left">
-        <button ion-button color="danger" outline (click)="deleteRoom(room.key)">Borrar</button>
+        <button ion-button color="danger" outline (click)="deleteRoom(room.key)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
       </ion-item-options>
       <!-- <ion-item-options side="right">
           <button ion-button color="secondary" (click)="editarCliente(cliente)">Borrar</button>

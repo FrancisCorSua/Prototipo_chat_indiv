@@ -2,13 +2,9 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AuthProvider } from '../../providers/auth/auth';
 import { SignupPage } from '../../pages/signup/signup';
 import { TabsPage } from '../../pages/tabs/tabs';
-import { AlertController } from 'ionic-angular';
-import { ProfilePage } from '../profile/profile';
 import { User } from '../../models/user';
-import { HomePage } from '../home/home';
 import { AngularFireDatabase } from 'angularfire2/database';
 
 /**

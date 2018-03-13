@@ -7,9 +7,16 @@
 
   <ion-navbar>
     <ion-title>Ionic </ion-title>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="back()">
+        <ion-icon name="arrow-back"></ion-icon>
+
+      </button>
+    </ion-buttons>
     <ion-buttons end>
       <button ion-button icon-only (click)="doConfirm()">
         <ion-icon name="exit"></ion-icon>
+
       </button>
     </ion-buttons>
   </ion-navbar>
